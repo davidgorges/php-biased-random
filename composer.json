@@ -2,7 +2,7 @@
     "name": "davidgorges/php-biased-random",
     "description": "",
     "type": "library",
-    "keywords": [statistics,probability,library,random,randomizer],
+    "keywords": ["statistics","probability","library","random","randomizer"],
     "homepage": "http://www.davidgorges.de/",
     "license": "MIT",
     "require": {

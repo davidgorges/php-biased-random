@@ -5,6 +5,9 @@ php:
   - "5.3"
   - hhvm
 
+install:
+  composer install
+
 script: phpunit --configuration tests/phpunit.xml
 
 notifications:

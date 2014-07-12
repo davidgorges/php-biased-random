@@ -4,8 +4,8 @@ class ElementTest extends PHPUnit_Framework_TestCase {
 
     public function testDataStore()
     {
-        $element = new \BiasedRandom\Element("stringtest");
-        $this->assertEquals("stringtest", $element->getData());
+        $element = new \BiasedRandom\Element('stringtest');
+        $this->assertEquals('stringtest', $element->getData());
 
         $std = new stdClass();
         $element2 = new \BiasedRandom\Element($std);
@@ -20,7 +20,7 @@ class ElementTest extends PHPUnit_Framework_TestCase {
      */
     public function testNegativeWeightShouldThrowException()
     {
-        $element = new \BiasedRandom\Element("negativeweight", -0.5);
+        $element = new \BiasedRandom\Element('negativeweight', -0.5);
     }
 
 }

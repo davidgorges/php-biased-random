@@ -27,7 +27,7 @@ class Randomizer
     {
         if ($method == 'add') {
             if (count($params) < 1) {
-                throw new \Exception("Element parameter is required");
+                throw new \Exception('Element parameter is required');
             }
 
             if ($params[0] instanceof Element) {

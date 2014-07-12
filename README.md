@@ -29,10 +29,10 @@ In some cases, you want to add multiple items and retrieve the probabilty of an 
 You don't need to create Element wrapper objects. You can just add your elements to the Randomizer:
 
     $randomizer = new Randomizer();
-    $randomizer->add("banana")->add("apple");
+    $randomizer->add('banana')->add('apple');
 
     // with weight
-    $randomizer->add("banana", 10)->add("apple", 5);
+    $randomizer->add('banana', 10)->add('apple', 5);
 
 
 Note: If you add multiple identical items, they will be combined into a single element with adjusted weight.

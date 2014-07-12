@@ -5,7 +5,7 @@ php:
   - "5.3"
   - hhvm
 
-script: phpunit
+script: phpunit --configuration tests/phpunit.xml
 
 notifications:
   recipients:

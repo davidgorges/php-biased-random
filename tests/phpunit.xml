@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="Bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="davidgorges/php-biased-random">
+            <directory>./BiasedRandomTest</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

@@ -1,0 +1,19 @@
+{
+    "name": "davidgorges/php-biased-random",
+    "description": "",
+    "type": "library",
+    "keywords": [],
+    "homepage": "http://www.davidgorges.de/",
+    "license": "",
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "phpunit/PHPUnit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "BiasedRandom": "src/"
+        }
+    }
+}

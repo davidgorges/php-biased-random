@@ -70,6 +70,14 @@ class RandomizerTest extends PHPUnit_Framework_TestCase {
 
     }
 
+    public function testShorthandAddMethod() {
+        $randomizer = new Randomizer();
+        $randomizer->add("banana", 50);
+        $result = $randomizer->get();
+        $this->assertEquals("banana", $result);
+
+    }
+
     public function testHighProbability() {
         $randomizer = new Randomizer();
         $randomizer->add($this->generateElement("a", 99))->add($this->generateElement("b", 1));

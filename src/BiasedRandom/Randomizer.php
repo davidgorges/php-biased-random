@@ -4,6 +4,9 @@ namespace BiasedRandom;
 
 /**
  * The Randomizer class.
+ *
+ * @method int add() add(Element $element) add an element
+ * @method int add() add(mixed $data, $weight = 0.0) add an element
  */
 class Randomizer
 {
@@ -14,19 +17,28 @@ class Randomizer
     private $elements = array();
 
     /**
-     * @param Element $element
+     * @param $method
+     * @param $params
      *
      * @return $this
+     * @throws \Exception
      */
-    public function add(Element $element)
+    function __call($method, $params)
     {
-        if ($this->elementExistsWith($element->getData())) {
-            $this->addWeightToExisting($element);
-        } else {
-            $this->elements[] = $element;
-        }
+        if ($method == 'add') {
+            if (count($params) < 1) {
+                throw new \Exception("Element parameter is required");
+            }
 
-        return $this;
+            if ($params[0] instanceof Element) {
+                return $this->addElement($params[0]);
+            } else {
+                $weight = isset($params[1]) && is_numeric($params[1]) ? $params[1] : 1;
+                $element = new Element($params[0], $weight);
+
+                return $this->addElement($element);
+            }
+        }
     }
 
     /**
@@ -70,6 +82,22 @@ class Randomizer
     }
 
     /**
+     * @param Element $element
+     *
+     * @return $this
+     */
+    protected function addElement($element)
+    {
+        if ($this->elementExistsWith($element->getData())) {
+            $this->addWeightToExisting($element);
+        } else {
+            $this->elements[] = $element;
+        }
+
+        return $this;
+    }
+
+    /**
      * @return float
      */
     private function getTotalWeight()
@@ -107,7 +135,7 @@ class Randomizer
     private function addWeightToExisting(Element $newElement)
     {
         $elements = $this->elements;
-        array_map(function ($existingElement, $index) use (&$elements, &$newElement)  {
+        array_map(function ($existingElement, $index) use (&$elements, &$newElement) {
             if ($existingElement->getData() === $newElement->getData()) {
                 $newWeight = $existingElement->getWeight() + $newElement->getWeight();
                 $elements[$index] = new Element($existingElement->getData(), $newWeight);
@@ -116,4 +144,4 @@ class Randomizer
 
         $this->elements = $elements;
     }
-} 
+}

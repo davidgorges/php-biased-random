@@ -39,6 +39,8 @@ class Randomizer
                 return $this->addElement($element);
             }
         }
+
+        throw new \Exception(sprintf("Unknown method: %s", $method));
     }
 
     /**
@@ -74,7 +76,7 @@ class Randomizer
             },
             $this->elements);
 
-        if ($found) {
+        if ($found !== null) {
             return $found->getWeight() / $this->getTotalWeight();
         }
 
@@ -84,10 +86,14 @@ class Randomizer
     /**
      * @param Element $element
      *
+     * @throws Exception
      * @return $this
      */
     protected function addElement($element)
     {
+        if($element->getData() == null) {
+            throw new Exception("Invalid Element data: null is not allowed.");
+        }
         if ($this->elementExistsWith($element->getData())) {
             $this->addWeightToExisting($element);
         } else {
